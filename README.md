@@ -1,22 +1,24 @@
 # redigo-practice
 
-1. 安裝 redis
+### 安裝 redis
 ```
 $ brew install redis
 ```
-windows 請下載 redis.exe 並安裝
+### windows系統至連結下載 Redis-x64-xxx.zip 解壓縮並安裝
+https://github.com/tporadowski/redis/releases
 
-2. 啟動 redis server
+
+### 啟動 redis server
 ```
 $ redis-server
 ```
 
-3. 安裝 redigo 套件
+### 安裝 redigo 套件
 ```
 $ go get github.com/gomodule/redigo
 ```
 
-4. 本機執行 redigo
+### 本機執行 redigo
 ```
 $ go run .
 ```

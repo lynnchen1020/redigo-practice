@@ -43,24 +43,19 @@ func main() {
 	conn := pool.Get()
 	defer conn.Close()
 
-	var value1 int
-	var value2 string
-
-	conn.Do("MSET", "key1", 0, "key2", "k")
-
-	//這是package 提供的 helper
-	reply, err := redis.Values(conn.Do("MGET", "key1", "key2"))
+	// 寫入 redis
+	reply, err := conn.Do("MSET", "key1", "hello", "key2", "world")
 	if err != nil {
-		// handle error
-		fmt.Println("err1", err)
+
 	}
 
-	fmt.Println("rep", reply)
+	fmt.Println("reply =>", reply)
 
-	//這是package提供的helper 幫助可以scan 相關數值
-	if _, err := redis.Scan(reply, &value1, &value2); err != nil {
-		// handle error
-		fmt.Println("err2", reply)
+	// 讀取 redis
+	response, err := redis.Strings(conn.Do("MGET", "key1", "key2"))
+	if err != nil {
+
 	}
 
+	fmt.Println("response =>", response)
 }
